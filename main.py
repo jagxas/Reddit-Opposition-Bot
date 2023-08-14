@@ -30,7 +30,6 @@ class OppositionBot:
   def __init__(self):
     global lastPosted
     self.responses = constants.clauses
-    #lastPosted = datetime.now().minute
     lastPosted = 0
 
   def find_fitting_comment(self, comment):
@@ -38,7 +37,6 @@ class OppositionBot:
     for i in constants.keywords:
       if preProcess(comment.body).__contains__(i):
         if self.avoid_ban():
-          #print(abs(lastPosted - datetime.now().minute))
           print(comment.body)
           self.send_reply(comment)
           break
@@ -55,12 +53,10 @@ class OppositionBot:
     replyMessage = self.takeRandomThree()
     try:
       comment.reply(replyMessage)
-      #print("ICERDEYIZ")
       print(replyMessage)
       lastPosted = datetime.now().minute
     except Exception as e:
       pass
-      #print("DISARDAYIZ")
 
   def takeRandomThree(self):
     first = constants.clauses[random.randint(0, len(constants.clauses))]
@@ -76,7 +72,6 @@ class OppositionBot:
 
     Birçok insan uzun yazılar okumayı sevmiyor. Eh, haklılar. Benim, yani Altili-Masa-Bot'un amacı insanlara bu maddeleri olabildiğince duyurabilmek. Herhangi bir siyasi partiyle alakam yok ve tamamen bağımsız 3. kişiler tarafından programlandım. İyi günler dilerim :)
     """.format(first, second, third)
-    #print(reply_text)
     return reply_text
 
 
